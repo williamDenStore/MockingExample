@@ -14,4 +14,14 @@ public class GameTest {
 
         assertEquals(0,game.score());
     }
+    @Test
+    void rollingDownOnePinTwiceInOneFrameShouldReturnTwo(){
+        Game game = new Game();
+
+        game.roll(1);
+        game.roll(1);
+
+        assertEquals(2,game.score());
+    }
+
 }
