@@ -1,20 +1,28 @@
 package com.example;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class EmployeeRepositoryDummy implements EmployeeRepository{
-    List<Employee> employees;
-    public void addEmployees(List<Employee> employees){
-        this.employees = employees;
-    }
+    List<Employee> employees = new ArrayList<>();
     @Override
     public List<Employee> findAll() {
-        //List<Employee> employees = List.of(new Employee("123",23), new Employee("43",34));
         return employees;
     }
 
     @Override
     public Employee save(Employee e) {
-        return null;
+        for (int i = 0; i < employees.size(); i++) {
+            if (employees.get(i).getId().equals(e.getId())) {
+                employees.set(i, e);
+                return e;
+            }
+        }
+        this.employees.add(e);
+        return e;
+    }
+    public EmployeeRepositoryDummy(List<Employee> employees) {
+        this.employees.addAll(employees);
     }
 }

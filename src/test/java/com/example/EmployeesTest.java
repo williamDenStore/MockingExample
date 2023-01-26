@@ -9,8 +9,9 @@ import static org.mockito.Mockito.*;
 
 class EmployeesTest {
     //dummy dums
+    Employees employeesDummy;
     BankServiceDummy bankServiceDummy = new BankServiceDummy();
-    EmployeeRepositoryDummy employeeRepositoryDummy = new EmployeeRepositoryDummy();
+    EmployeeRepositoryDummy employeeRepositoryDummy = new EmployeeRepositoryDummy(List.of(new Employee("123",3), new Employee("43", 5)));
     //Mockito mocks
     EmployeeRepository employeeRepositoryMock = mock(EmployeeRepository.class);
     BankService bankServiceMock = mock(BankService.class);
@@ -18,12 +19,12 @@ class EmployeesTest {
 
     @Test
     void payEmployeesWithListOfTwoEmployeesShouldCallBankServicePayMethodTwice(){
-        employeeRepositoryDummy.addEmployees(List.of(new Employee("123",23), new Employee("43",34)));
-        Employees employeesDummy = new Employees(employeeRepositoryDummy, bankServiceDummy);
+        employeeRepositoryDummy.save(new Employee("123",23));
+        updateEmployeesDummy(employeeRepositoryDummy);
 
         int actual = employeesDummy.payEmployees();
         int expected = bankServiceDummy.count;
-
+        System.out.println(actual+" "+expected);
         assertEquals(actual,expected);
     }
     @Test
@@ -43,5 +44,8 @@ class EmployeesTest {
         doThrow(new RuntimeException("Bank service error")).when(bankServiceMock).pay(anyString(), anyDouble());
         employeesMock.payEmployees();
         assertFalse(employeeList.get(0).isPaid());
+    }
+    void updateEmployeesDummy(EmployeeRepositoryDummy employeeRepositoryDummy){
+        this.employeesDummy = new Employees(employeeRepositoryDummy, bankServiceDummy);
     }
 }
