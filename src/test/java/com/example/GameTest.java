@@ -51,6 +51,16 @@ public class GameTest {
 
         assertEquals(28,game.score());
     }
+    @Test
+    void rolling6And4Then5And3ShouldReturn23(){
+        Game game = new Game();
+        game.roll(6);
+        game.roll(4);
+        game.roll(5);
+        game.roll(3);
+
+        assertEquals(23, game.score());
+    }
 
 
 
