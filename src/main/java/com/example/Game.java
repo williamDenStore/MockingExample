@@ -6,23 +6,25 @@ public class Game {
     int lastRoll;
     double frames;
     public void roll(int i) {
-        if (bonus>0) {
-            rollScore += i;
-            if (bonus>2) {
+        if (!gameIsOver()) {
+            if (bonus > 0) {
                 rollScore += i;
+                if (bonus > 2) {
+                    rollScore += i;
+                    bonus--;
+                }
                 bonus--;
             }
-            bonus--;
+            if (i == 10) {
+                bonus += 2;
+                frames += 0.5;
+            }
+            if (i + lastRoll == 10 && i != 10)
+                bonus += 1;
+            lastRoll = i;
+            rollScore += i;
+            frames += 0.5;
         }
-        if (i == 10) {
-            bonus += 2;
-            frames+=0.5;
-        }
-        if (i+lastRoll == 10 && i!=10)
-            bonus+=1;
-        lastRoll=i;
-        rollScore+=i;
-        frames+=0.5;
     }
 
     public int score() {

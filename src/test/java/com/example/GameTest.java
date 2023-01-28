@@ -154,7 +154,20 @@ public class GameTest {
 
         assertFalse(game.gameIsOver());
     }
+    @Test
+    void rollingWhenGameIsOverDoesNotAddAnyScore(){
+        Game game = new Game();
 
+        for (int i = 0; i < 9; i++) {
+            game.roll(10);
+        }
+        game.roll(3);
+        game.roll(5);
+        game.roll(5);
+
+        assertEquals(259, game.score());
+
+    }
 
 
 
