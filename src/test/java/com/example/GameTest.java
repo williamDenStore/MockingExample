@@ -180,4 +180,14 @@ public class GameTest {
 
         assertEquals(284, game.score());
     }
+    @Test
+    void rolling15StrikesShouldStopAfter12AndReturnScoreOf300(){
+        Game game = new Game();
+
+        for (int i = 0; i < 15; i++) {
+            game.roll(10);
+        }
+
+        assertEquals(300, game.score());
+    }
 }
