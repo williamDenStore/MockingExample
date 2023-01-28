@@ -120,6 +120,18 @@ public class GameTest {
 
         assertTrue(game.gameIsOver());
     }
+    @Test
+    void gameIsOverShouldBeTrueAfter9StrikesThen5And3(){
+        Game game = new Game();
+
+        for (int i = 0; i < 9; i++) {
+            game.roll(10);
+        }
+        game.roll(5);
+        game.roll(3);
+
+        assertTrue(game.gameIsOver());
+    }
 
 
 

@@ -14,8 +14,10 @@ public class Game {
             }
             bonus--;
         }
-        if (i == 10)
-            bonus+=2;
+        if (i == 10) {
+            bonus += 2;
+            frames+=0.5;
+        }
         if (i+lastRoll == 10 && i!=10)
             bonus+=1;
         lastRoll=i;
