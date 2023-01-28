@@ -202,6 +202,20 @@ public class GameTest {
         game.roll(3);
 
         assertEquals(272, game.score());
+    }
+    @Test
+    void rollingStrikeAndSpareEveryOther(){
+        Game game = new Game();
 
+        for (int i = 0; i < 15; i++) {
+            if (i%2==0){
+                game.roll(10);
+            }
+            else {
+                game.roll(5);
+                game.roll(5);
+            }
+        }
+        assertEquals(200, game.score());
     }
 }
