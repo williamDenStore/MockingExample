@@ -190,4 +190,18 @@ public class GameTest {
 
         assertEquals(300, game.score());
     }
+    @Test
+    void rolling9StrikeThen9And1Then3ShouldReturn272(){
+        Game game = new Game();
+
+        for (int i = 0; i < 9; i++) {
+            game.roll(10);
+        }
+        game.roll(9);
+        game.roll(1);
+        game.roll(3);
+
+        assertEquals(272, game.score());
+
+    }
 }
