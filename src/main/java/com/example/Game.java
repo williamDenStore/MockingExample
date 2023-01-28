@@ -7,12 +7,14 @@ public class Game {
     public void roll(int i) {
         if (bonus>0) {
             rollScore += i;
+            if (bonus>2)
+                rollScore+=i;
             bonus--;
         }
         if (i == 10)
-            bonus=2;
+            bonus+=2;
         if (i+lastRoll == 10 && i!=10)
-            bonus=1;
+            bonus+=1;
         lastRoll=i;
         rollScore+=i;
     }

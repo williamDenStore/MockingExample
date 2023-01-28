@@ -82,6 +82,16 @@ public class GameTest {
 
         assertEquals(43, game.score());
     }
+    @Test
+    void rollingStrikeTwiceThen4And2ShouldReturn46(){
+        Game game = new Game();
+        game.roll(10);
+        game.roll(10);
+        game.roll(4);
+        game.roll(2);
+
+        assertEquals(46,game.score());
+    }
 
 
 
