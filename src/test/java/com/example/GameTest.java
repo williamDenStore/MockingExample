@@ -2,7 +2,7 @@ package com.example;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class GameTest {
     @Test
@@ -103,6 +103,12 @@ public class GameTest {
         game.roll(3);
 
         assertEquals(52,game.score());
+    }
+    @Test
+    void gameIsOverShouldReturnFalseIfNoRollsHasBeenMade(){
+        Game game = new Game();
+
+        assertFalse(game.gameIsOver());
     }
 
 

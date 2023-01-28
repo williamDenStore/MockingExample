@@ -24,4 +24,8 @@ public class Game {
     public int score() {
         return rollScore;
     }
+
+    public boolean gameIsOver() {
+        return false;
+    }
 }
