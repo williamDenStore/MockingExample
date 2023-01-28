@@ -7,8 +7,10 @@ public class Game {
     public void roll(int i) {
         if (bonus>0) {
             rollScore += i;
-            if (bonus>2)
-                rollScore+=i;
+            if (bonus>2) {
+                rollScore += i;
+                bonus--;
+            }
             bonus--;
         }
         if (i == 10)
