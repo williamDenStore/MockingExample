@@ -110,6 +110,16 @@ public class GameTest {
 
         assertFalse(game.gameIsOver());
     }
+    @Test
+    void gameIsOverShouldReturnTrueAfter20rollsWithNoStrike(){
+        Game game = new Game();
+
+        for (int i = 0; i < 20; i++) {
+            game.roll(4);
+        }
+
+        assertTrue(game.gameIsOver());
+    }
 
 
 
