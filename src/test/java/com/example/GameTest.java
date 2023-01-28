@@ -132,6 +132,16 @@ public class GameTest {
 
         assertTrue(game.gameIsOver());
     }
+    @Test
+    void gameIsOverShouldBeFalseIfLastRollIsStrike(){
+        Game game = new Game();
+
+        for (int i = 0; i < 10; i++) {
+            game.roll(10);
+        }
+
+        assertFalse(game.gameIsOver());
+    }
 
 
 

@@ -30,7 +30,7 @@ public class Game {
     }
 
     public boolean gameIsOver() {
-        if (frames>=10)
+        if (frames>=10 && bonus == 0)
             return true;
         return false;
     }
