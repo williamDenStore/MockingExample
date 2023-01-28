@@ -33,6 +33,15 @@ public class GameTest {
         game.roll(3);
         assertEquals(12, game.score());
     }
+    @Test
+    void rollingStrikeThen4And3ShouldReturn24(){
+        Game game = new Game();
+        game.roll(10);
+        game.roll(4);
+        game.roll(3);
+
+        assertEquals(24,game.score());
+    }
 
 
 
