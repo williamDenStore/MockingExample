@@ -168,8 +168,16 @@ public class GameTest {
         assertEquals(259, game.score());
 
     }
+    @Test
+    void rolling10StrikesThen5And4ShouldReturn284(){
+        Game game = new Game();
 
+        for (int i = 0; i < 10; i++) {
+            game.roll(10);
+        }
+        game.roll(5);
+        game.roll(4);
 
-
-
+        assertEquals(284, game.score());
+    }
 }

@@ -15,7 +15,7 @@ public class Game {
                 }
                 bonus--;
             }
-            if (i == 10) {
+            if (i == 10 && frames<10) {
                 bonus += 2;
                 frames += 0.5;
             }
@@ -24,6 +24,8 @@ public class Game {
             lastRoll = i;
             rollScore += i;
             frames += 0.5;
+            if(frames>=10.5)
+                rollScore-=i;
         }
     }
 
