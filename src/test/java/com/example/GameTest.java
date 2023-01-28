@@ -42,6 +42,15 @@ public class GameTest {
 
         assertEquals(24,game.score());
     }
+    @Test
+    void rollingStrikeThen4And5ShouldReturn28(){
+        Game game = new Game();
+        game.roll(10);
+        game.roll(4);
+        game.roll(5);
+
+        assertEquals(28,game.score());
+    }
 
 
 
