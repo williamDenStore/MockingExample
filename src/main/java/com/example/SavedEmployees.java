@@ -2,9 +2,8 @@ package com.example;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class EmployeeRepositoryDummy implements EmployeeRepository{
+public class SavedEmployees implements EmployeeRepository{
     List<Employee> employees = new ArrayList<>();
     @Override
     public List<Employee> findAll() {
@@ -22,7 +21,7 @@ public class EmployeeRepositoryDummy implements EmployeeRepository{
         this.employees.add(e);
         return e;
     }
-    public EmployeeRepositoryDummy(List<Employee> employees) {
+    public SavedEmployees(List<Employee> employees) {
         this.employees.addAll(employees);
     }
 }

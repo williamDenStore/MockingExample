@@ -11,7 +11,7 @@ class EmployeesTest {
     //dummy dums
     Employees employeesDummy;
     BankServiceDummy bankServiceDummy = new BankServiceDummy();
-    EmployeeRepositoryDummy employeeRepositoryDummy = new EmployeeRepositoryDummy(List.of(new Employee("123",3), new Employee("43", 5)));
+    SavedEmployees savedEmployees = new SavedEmployees(List.of(new Employee("123",3), new Employee("43", 5)));
     //Mockito mocks
     EmployeeRepository employeeRepositoryMock = mock(EmployeeRepository.class);
     BankService bankServiceMock = mock(BankService.class);
@@ -19,8 +19,8 @@ class EmployeesTest {
 
     @Test
     void payEmployeesWithListOfTwoEmployeesShouldCallBankServicePayMethodTwice(){
-        employeeRepositoryDummy.save(new Employee("123",23));
-        updateEmployeesDummy(employeeRepositoryDummy);
+        savedEmployees.save(new Employee("123",23));
+        this.employeesDummy = new Employees(savedEmployees, bankServiceDummy);
 
         int actual = employeesDummy.payEmployees();
         int expected = bankServiceDummy.count;
@@ -44,8 +44,5 @@ class EmployeesTest {
         doThrow(new RuntimeException("Bank service error")).when(bankServiceMock).pay(anyString(), anyDouble());
         employeesMock.payEmployees();
         assertFalse(employeeList.get(0).isPaid());
-    }
-    void updateEmployeesDummy(EmployeeRepositoryDummy employeeRepositoryDummy){
-        this.employeesDummy = new Employees(employeeRepositoryDummy, bankServiceDummy);
     }
 }
